@@ -13,8 +13,8 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Car benzCar = CarFactory.getComputer(CarFactory.Kinds.Benz);
-        Car BMWCar = CarFactory.getComputer(CarFactory.Kinds.BMW);
+        Car benzCar = CarFactory.getCar(CarFactory.Kinds.Benz);
+        Car BMWCar = CarFactory.getCar(CarFactory.Kinds.BMW);
 
         System.out.println(benzCar.getBrand());
         System.out.println(BMWCar.getBrand());

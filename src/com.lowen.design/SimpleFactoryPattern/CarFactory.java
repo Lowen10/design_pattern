@@ -10,7 +10,7 @@ public class CarFactory {
         Benz, BMW
     }
 
-    public static Car getComputer(Kinds kinds) {
+    public static Car getCar(Kinds kinds) {
         switch (kinds) {
             case BMW:
                 return new BMWCar();
