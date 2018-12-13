@@ -1,6 +1,7 @@
 package com.lowen.design.Prototype;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,6 +12,7 @@ public class Team implements Cloneable {
 
     private Integer id;
     private String name;
+    private String tags[];
     private Person leader;
     private List<Person> members;
 
@@ -49,8 +51,29 @@ public class Team implements Cloneable {
         return members;
     }
 
+    public String[] getTags() {
+        return tags;
+    }
+
+    public void setTags(String[] tags) {
+        this.tags = tags;
+    }
+
     public void setMembers(List<Person> members) {
         this.members = members;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Team team = (Team) o;
+
+        if (id != null ? !id.equals(team.id) : team.id != null) return false;
+        if (name != null ? !name.equals(team.name) : team.name != null) return false;
+        if (leader != null ? !leader.equals(team.leader) : team.leader != null) return false;
+        return members != null ? members.equals(team.members) : team.members == null;
     }
 
     @Override
@@ -58,13 +81,14 @@ public class Team implements Cloneable {
         return "Team{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", tags=" + Arrays.toString(tags) +
                 ", leader=" + leader +
                 ", members=" + members +
                 '}';
     }
 
     /**
-     * 深度克隆
+     * 深度克隆,只是demo，暂时没做非空判断，优秀的代码，是需要时刻考虑异常情况的
      *
      * @return
      */
@@ -75,9 +99,12 @@ public class Team implements Cloneable {
             team.setLeader(cloneLeader);
             List<Person> cloneMembers = new ArrayList<Person>();
             for (Person person : members) {
-                cloneMembers.add(person);
+                cloneMembers.add(person.clone());
             }
             team.setMembers(cloneMembers);
+            String[] cloneTags = new String[tags.length];
+            System.arraycopy(tags, 0, cloneTags, 0, tags.length);
+            team.setTags(cloneTags);
             return team;
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
