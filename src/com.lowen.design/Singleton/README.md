@@ -1,3 +1,5 @@
+##### [CSDN 相关博客](https://blog.csdn.net/micoxi/article/details/84784019)
+
 # 单例模式
 
 确保一个类只有一个实例，且提供全局访问点。 

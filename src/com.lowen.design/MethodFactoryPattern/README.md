@@ -1,3 +1,5 @@
+##### [CSDN 相关博客](https://blog.csdn.net/micoxi/article/details/84593109)
+
 #方法工厂模式
 
 定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个，
